@@ -19,6 +19,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -120,6 +121,36 @@
                     <p class="project-desc">{{ project.desc }}</p>
                     <span class="project-tech">{{ project.tech }}</span>
                 </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <h2 class="section-title">Certificates</h2>
+            <div class="certificates-grid">
+                {% for cert in certificates %}
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="{{ cert.image.url }}" alt="{{ cert.title }}">
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title">{{ cert.title }}</h3>
+                        <p class="cert-issuer">{{ cert.issuer }}</p>
+                        <p class="cert-date">{{ cert.issue_date|date:"M Y" }}</p>
+                        {% if cert.description %}
+                        <p class="cert-desc">{{ cert.description }}</p>
+                        {% endif %}
+                        {% if cert.credential_url %}
+                        <a href="{{ cert.credential_url }}" target="_blank" rel="noopener" class="btn btn-outline cert-btn">
+                            <i class="fas fa-external-link-alt"></i> View Credential
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <p class="cert-empty">No certificates added yet.</p>
                 {% endfor %}
             </div>
         </div>

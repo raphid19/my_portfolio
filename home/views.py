@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import ContactSubmission
+from .models import ContactSubmission, Certificate
 
 def index(request):
     if request.method == 'POST':
@@ -27,6 +27,7 @@ def index(request):
             {'title': 'Project Beta', 'desc': 'REST API platform', 'tech': 'Django REST Framework'},
             {'title': 'Project Gamma', 'desc': 'Real-time dashboard', 'tech': 'React + WebSockets'},
         ],
+        'certificates': Certificate.objects.all(),
         'socials': {
             'github': 'https://github.com/raphid',
             'linkedin': 'https://linkedin.com/in/raphid',
